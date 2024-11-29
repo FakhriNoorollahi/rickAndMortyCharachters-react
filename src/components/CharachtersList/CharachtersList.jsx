@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { HiOutlineEye, HiOutlineEyeSlash } from "react-icons/hi2";
 import Loader from "../Loader/Loader";
 import { useCharachter } from "../../Context/CharacterContext";
 
 function CharachtersList() {
- 
+  const [viewMore, setViewMore] = useState(false);
   const { isLoading, setCharachterId, allCharachters, charachterId } =
     useCharachter();
   const displayCharacter = (id) => {
@@ -16,28 +16,58 @@ function CharachtersList() {
       {isLoading ? (
         <Loader />
       ) : (
-        <ul>
-          {allCharachters.map((charachter) => (
-            <CharachterItem key={charachter.id} charachter={charachter}>
-              <button
-                className="icon red"
-                onClick={(e) => displayCharacter(charachter.id)}
-              >
-                {charachterId === charachter.id ? (
-                  <HiOutlineEyeSlash />
-                ) : (
-                  <HiOutlineEye />
-                )}
-              </button>
-            </CharachterItem>
-          ))}
-        </ul>
+        <>
+          <ul>
+            <FoundedCharachters
+              viewMore={viewMore}
+              allCharachters={allCharachters}
+              charachterId={charachterId}
+              displayCharacter={displayCharacter}
+            />
+          </ul>
+          {allCharachters.length > 5 && (
+            <button
+              className="badge btn--primary show-more"
+              onClick={() => setViewMore((viewMore) => !viewMore)}
+            >
+              {viewMore ? "Hide" : "View More"}
+            </button>
+          )}
+        </>
       )}
     </div>
   );
 }
 
 export default CharachtersList;
+
+function FoundedCharachters({
+  viewMore,
+  allCharachters,
+  charachterId,
+  displayCharacter,
+}) {
+  const charachters = viewMore ? allCharachters : allCharachters.slice(0, 5);
+
+  return (
+    <>
+      {charachters.map((charachter) => (
+        <CharachterItem key={charachter.id} charachter={charachter}>
+          <button
+            className="icon red"
+            onClick={(e) => displayCharacter(charachter.id)}
+          >
+            {charachterId === charachter.id ? (
+              <HiOutlineEyeSlash />
+            ) : (
+              <HiOutlineEye />
+            )}
+          </button>
+        </CharachterItem>
+      ))}
+    </>
+  );
+}
 
 export function CharachterItem({ charachter, children }) {
   return (

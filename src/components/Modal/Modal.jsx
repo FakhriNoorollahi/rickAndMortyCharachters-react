@@ -9,7 +9,7 @@ function Modal() {
 
   if (!openModal) return;
   return (
-    <div>
+    <>
       <div className="backdrop"></div>
       <div className="modal">
         <div className="modal__header">
@@ -19,19 +19,23 @@ function Modal() {
           </button>
         </div>
         <div>
-          {favourites.map((charachter) => (
-            <CharachterItem key={charachter.id} charachter={charachter}>
-              <button
-                className="icon red"
-                onClick={(e) => deleteFavourite(charachter.id)}
-              >
-                <HiOutlineTrash />
-              </button>
-            </CharachterItem>
-          ))}
+          {favourites.length > 0 ? (
+            favourites.map((charachter) => (
+              <CharachterItem key={charachter.id} charachter={charachter}>
+                <button
+                  className="icon red"
+                  onClick={(e) => deleteFavourite(charachter.id)}
+                >
+                  <HiOutlineTrash />
+                </button>
+              </CharachterItem>
+            ))
+          ) : (
+            <p className="modal-noItem">There are no favorite characters</p>
+          )}
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

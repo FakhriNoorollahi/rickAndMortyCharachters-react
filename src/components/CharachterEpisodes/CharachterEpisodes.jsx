@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import {
   HiOutlineArrowUpCircle,
   HiOutlineArrowDownCircle,
@@ -28,7 +28,7 @@ function CharachterEpisodes({ episode }) {
   }
 
   if (isLoading || !episodeInfo) return <Loader />;
-  console.log(episodes);
+
   return (
     <div className="character-episodes">
       <div className="title">

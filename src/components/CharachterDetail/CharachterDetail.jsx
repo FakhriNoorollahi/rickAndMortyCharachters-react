@@ -7,7 +7,9 @@ import { useCharachter } from "../../Context/CharacterContext";
 function CharachterDetail({ charachterId }) {
   const { addToFavorite, favourites } = useCharachter();
   const { isLoading, data: charachter } = useFetch(`character/${charachterId}`);
-  if (isLoading || !charachter) return <Loader />; //قسمت charachter.length باید درست شود  چون charachter یک ابجکت است ولی من مانند یک آرایه با آن برخورد کردم
+  console.log(charachter, !charachter);
+
+  if (isLoading || !charachter) return <Loader />;
 
   return (
     <div>

@@ -32,7 +32,7 @@ export function CharacterProvider({ children }) {
           `https://rickandmortyapi.com/api/character/?name=${search}`,
           signal
         );
-        setAllCharachters(data.results.splice(0, 5));
+        setAllCharachters(data.results);
       } catch (error) {
         toast.error(error.response.data.error);
         setAllCharachters([]);

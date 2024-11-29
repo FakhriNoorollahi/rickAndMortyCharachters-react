@@ -1,8 +1,10 @@
 #root {
   margin: 0 auto;
   max-width: 1280px;
+  width: calc(100% - 4em);
   position: relative;
-  padding: 2rem;
+  padding-top: 2em;
+  padding-bottom: 2em;
 }
 
 .navbar {
@@ -55,7 +57,17 @@
 }
 
 .characters-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
   width: 40%;
+}
+
+.show-more {
+  align-self: center;
+  gap: 0.5em;
+  width: 100px;
+  text-align: center;
 }
 
 .box h2 {
@@ -132,6 +144,15 @@
   background-color: var(--rose-600);
 }
 
+.no-selectedItem {
+  flex: 1;
+  color: var(--slate-300);
+}
+
+.container__character-detail {
+  flex: 1;
+}
+
 .character-detail {
   display: flex;
   /* flex-direction: column; */
@@ -150,6 +171,9 @@
 }
 
 .character-detail__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   padding: 1rem;
 }
 .character-detail__info .name {
@@ -185,7 +209,6 @@
 /* character episodes */
 
 .character-episodes {
-  /* border: 1px solid var(--slate-300); */
   background-color: var(--slate-800);
   border-radius: 1rem;
   padding: 1rem;
@@ -216,7 +239,6 @@
   justify-content: space-between;
   color: var(--slate-200);
   padding: 0.5rem 0;
-  /* cursor: pointer; */
 }
 
 @media (min-width: 768px) {
