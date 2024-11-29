@@ -144,6 +144,10 @@
   background-color: var(--rose-600);
 }
 
+.status.white {
+  background-color: var(--slate-50);
+}
+
 .no-selectedItem {
   flex: 1;
   color: var(--slate-300);
@@ -173,7 +177,7 @@
 .character-detail__info {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   padding: 1rem;
 }
 .character-detail__info .name {
@@ -181,7 +185,7 @@
   margin-bottom: 0.2rem;
 }
 .character-detail__info .info {
-  font-size: 0.9rem;
+  font-size: 1rem;
   margin-bottom: 1rem;
 }
 
@@ -204,6 +208,7 @@
 
 .character-detail__info .actions p {
   color: var(--slate-400);
+  padding: 0.6rem 0;
 }
 
 /* character episodes */

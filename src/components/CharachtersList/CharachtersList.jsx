@@ -78,7 +78,13 @@ export function CharachterItem({ charachter, children }) {
         <span>{charachter.name}</span>
       </h3>
       <div className="list-item__info">
-        <div className="status"></div>
+        <div
+          className={`status ${
+            charachter.status === "Dead"
+              ? "red"
+              : charachter.status === "unknown" && "white"
+          }`}
+        ></div>
         <span className="info">
           &nbsp;{charachter.status} - {charachter.species}
         </span>

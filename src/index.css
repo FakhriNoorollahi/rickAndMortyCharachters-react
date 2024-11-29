@@ -74,7 +74,7 @@ button {
 }
 
 .modal {
-  width: 98%;
+  width: 100%;
   min-height: 150px;
   position: absolute;
   top: 200px;
@@ -94,8 +94,6 @@ button {
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--slate-600);
 }
-
-
 
 .icon {
   width: 1.6rem;
@@ -117,7 +115,7 @@ button {
 
 @media (min-width: 768px) {
   .modal {
-    max-width: 30rem;
+    max-width: 35rem;
   }
 }
 

@@ -7,7 +7,6 @@ import { useCharachter } from "../../Context/CharacterContext";
 function CharachterDetail({ charachterId }) {
   const { addToFavorite, favourites } = useCharachter();
   const { isLoading, data: charachter } = useFetch(`character/${charachterId}`);
-  console.log(charachter, !charachter);
 
   if (isLoading || !charachter) return <Loader />;
 
@@ -37,7 +36,13 @@ function CharachterSubInfo({ charachter, addToFavorite, favourites }) {
       <div className="character-detail__info">
         <h3 className="name">{charachter.name}</h3>
         <div className="info">
-          <span className="status"></span>
+          <span
+            className={`status ${
+              charachter.status === "Dead"
+                ? "red"
+                : charachter.status === "unknown" && "white"
+            }`}
+          ></span>
           <span>&nbsp;{charachter.status}</span>
           <span> - {charachter.species}</span>
         </div>
@@ -47,9 +52,9 @@ function CharachterSubInfo({ charachter, addToFavorite, favourites }) {
         </div>
         <div className="actions">
           {isTrue ? (
-            <span style={{ color: "var(--slate-100)" }}>
+            <p style={{ color: "var(--slate-100)" }}>
               Already Added To Favourites✅
-            </span>
+            </p>
           ) : (
             <button
               className="btn btn--primary"
