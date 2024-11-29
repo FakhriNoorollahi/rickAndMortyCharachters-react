@@ -18,7 +18,7 @@ function Modal() {
             <HiOutlineXCircle className="close icon" />
           </button>
         </div>
-        <div>
+        <div className="modal-content">
           {favourites.length > 0 ? (
             favourites.map((charachter) => (
               <CharachterItem key={charachter.id} charachter={charachter}>

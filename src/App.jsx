@@ -1,7 +1,7 @@
 import "./App.css";
+import { Toaster } from "react-hot-toast";
 import AppHeader from "./components/AppHeader/AppHeader";
 import CharachtersList from "./components/CharachtersList/CharachtersList";
-import { Toaster } from "react-hot-toast";
 import SelectedCharachter from "./components/SelectedCharacter/SelectedCharachter";
 import { CharacterProvider } from "./Context/CharacterContext";
 import Modal from "./components/Modal/Modal";

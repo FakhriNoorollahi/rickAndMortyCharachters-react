@@ -73,13 +73,21 @@ button {
   background-color: var(--slate-600);
 }
 
+.backdrop {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(63, 69, 76, 0.8);
+}
+
 .modal {
   width: 100%;
   min-height: 150px;
-  position: absolute;
-  top: 200px;
+  position: fixed;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   background-color: var(--slate-900);
   padding: 1rem;
   border-radius: 1rem;
@@ -93,6 +101,28 @@ button {
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--slate-600);
+}
+
+.modal-content {
+  height: 250px;
+  overflow-y: auto;
+  padding-bottom: 1em;
+}
+
+.modal-content::-webkit-scrollbar {
+  width: 10px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: var(--slate-400);
+  border-radius: 20px;
+  margin-left: 2em;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background-color: var(--slate-600);
+  border-radius: 20px;
+  border: 3px solid var(--slate-400);
 }
 
 .icon {
@@ -111,18 +141,13 @@ button {
 .modal-noItem {
   text-align: center;
   color: var(--slate-400);
+  font-weight: 500;
+  font-size: 1.2em;
+  line-height: 200px;
 }
 
 @media (min-width: 768px) {
   .modal {
     max-width: 35rem;
   }
-}
-
-.backdrop {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  inset: 0;
-  background-color: rgba(63, 69, 76, 0.8);
 }

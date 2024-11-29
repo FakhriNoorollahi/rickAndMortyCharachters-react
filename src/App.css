@@ -89,6 +89,7 @@
   padding: 0.8rem;
   cursor: pointer;
   transition: all 0.2s ease-out;
+  margin-right: 1em;
 }
 .list__item:hover {
   background-color: var(--slate-700);
