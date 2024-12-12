@@ -15,7 +15,8 @@ function CharachterEpisodes({ episode }) {
 
   let episodes;
   if (episodeInfo) {
-    episodes = [episodeInfo].flat().slice(0, 7);
+    episodes = [episodeInfo].flat();
+
     if (sortBy) {
       episodes = [...episodes].sort(
         (a, b) => new Date(b.air_date) - new Date(a.air_date)
@@ -41,11 +42,13 @@ function CharachterEpisodes({ episode }) {
           )}
         </button>
       </div>
-      <ul>
-        {episodes.map((episode, index) => (
-          <EpisodeItem key={episode.id} episode={episode} index={index} />
-        ))}
-      </ul>
+      <div className="wrapper-episodesList">
+        <ul>
+          {episodes.map((episode, index) => (
+            <EpisodeItem key={episode.id} episode={episode} index={index} />
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

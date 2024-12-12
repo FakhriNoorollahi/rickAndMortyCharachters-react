@@ -1,10 +1,9 @@
 import "./App.css";
 import { Toaster } from "react-hot-toast";
 import AppHeader from "./components/AppHeader/AppHeader";
-import CharachtersList from "./components/CharachtersList/CharachtersList";
-import SelectedCharachter from "./components/SelectedCharacter/SelectedCharachter";
-import { CharacterProvider } from "./Context/CharacterContext";
+import { CharacterProvider } from "./Context/CharacterContext.jsx";
 import Modal from "./components/Modal/Modal";
+import ContentContainer from "./components/ContentContainer/ContentContainer";
 
 function App() {
   return (
@@ -12,10 +11,7 @@ function App() {
       <Toaster />
       <Modal />
       <AppHeader />
-      <div className="main">
-        <CharachtersList />
-        <SelectedCharachter />
-      </div>
+      <ContentContainer />
     </CharacterProvider>
   );
 }

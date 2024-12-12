@@ -56,6 +56,24 @@
   gap: 2rem;
 }
 
+.no-result-found {
+  margin: 8em auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+.no-result-found img {
+  width: 100px;
+  height: 100px;
+}
+
+.no-result-found h4 {
+  font-size: 18px;
+  color: var(--slate-300);
+}
+
 .characters-list {
   display: flex;
   flex-direction: column;
@@ -224,6 +242,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 0.5em;
 }
 
 .character-episodes .title .icon {
@@ -239,12 +258,43 @@
   margin-bottom: 0.6rem;
 }
 
+.wrapper-episodesList {
+  padding-right: 7px;
+}
+
+.character-episodes ul {
+  height: fit-content;
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+.character-episodes ul::-webkit-scrollbar {
+  width: 10px;
+  margin-right: 0.5em;
+}
+
+.character-episodes ul::-webkit-scrollbar-track {
+  background: var(--slate-400);
+  border-radius: 20px;
+  margin-left: 2em;
+}
+
+.character-episodes ul::-webkit-scrollbar-thumb {
+  background-color: var(--slate-600);
+  border-radius: 20px;
+  border: 3px solid var(--slate-400);
+}
+
 .character-episodes li {
   display: flex;
   align-items: center;
   justify-content: space-between;
   color: var(--slate-200);
   padding: 0.5rem 0;
+}
+
+.character-episodes li div:last-child {
+  margin-right: 1em;
 }
 
 @media (min-width: 768px) {

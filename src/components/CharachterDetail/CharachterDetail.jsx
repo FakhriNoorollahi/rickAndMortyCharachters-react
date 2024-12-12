@@ -26,6 +26,7 @@ export default CharachterDetail;
 
 function CharachterSubInfo({ charachter, addToFavorite, favourites }) {
   const isTrue = favourites.map((item) => item.id).includes(charachter.id);
+
   return (
     <div className="character-detail">
       <img
@@ -58,7 +59,7 @@ function CharachterSubInfo({ charachter, addToFavorite, favourites }) {
           ) : (
             <button
               className="btn btn--primary"
-              onClick={(e) => addToFavorite(charachter.id)}
+              onClick={() => addToFavorite(charachter.id)}
             >
               Add To Favourite
             </button>
