@@ -24,7 +24,7 @@ export default ContentContainer;
 function NoResultFound() {
   return (
     <div className="no-result-found">
-      <img src="/src/assets/no-result-found-icon.png" />
+      <img src="/src/assets/images/no-result-found-icon.png" />
       <h4>There is no charachter</h4>
     </div>
   );
