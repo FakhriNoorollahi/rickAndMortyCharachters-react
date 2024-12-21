@@ -7,6 +7,7 @@ function CharachtersList() {
   const [viewMore, setViewMore] = useState(false);
   const { isLoading, setCharachterId, allCharachters, charachterId } =
     useCharachter();
+
   const displayCharacter = (id) => {
     setCharachterId((prevId) => (prevId === id ? null : id));
   };

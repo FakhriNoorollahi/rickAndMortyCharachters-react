@@ -11,10 +11,27 @@ export function CharacterProvider({ children }) {
   const [charachterId, setCharachterId] = useState(null);
   const [favourites, setFavourites] = useState([]);
   const [openModal, setOpenModal] = useState(false);
+  const [debounceTime, setDebounceTime] = useState(null);
 
-  const addToFavorite = (id) => {
-    const findCharacter = allCharachters.find((item) => +item.id === +id);
-    setFavourites((prev) => [...prev, findCharacter]);
+  async function fetchData(search) {
+    setIsLoading(true);
+    try {
+      const { data } = await axios.get(
+        `https://rickandmortyapi.com/api/character/?name=${search}`
+      );
+      setAllCharachters(data.results);
+    } catch (error) {
+      toast.error(error.response.data.error);
+      setAllCharachters([]);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  const addToFavorite = (charachter) => {
+    const isExist = favourites.map((item) => item.id).includes(charachter.id);
+
+    if (!isExist) setFavourites((prev) => [...prev, charachter]);
   };
 
   const deleteFavourite = (id) => {
@@ -22,36 +39,29 @@ export function CharacterProvider({ children }) {
     setFavourites(filteredFav);
   };
 
-  useEffect(() => {
-    const controller = new AbortController();
-    const signal = controller.signal;
-    async function getFetchData() {
-      setIsLoading(true);
-      try {
-        const { data } = await axios.get(
-          `https://rickandmortyapi.com/api/character/?name=${search}`,
-          signal
-        );
-        setAllCharachters(data.results);
-      } catch (error) {
-        toast.error(error.response.data.error);
-        setAllCharachters([]);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    getFetchData();
+  const handleSerach = (value) => {
+    setSearch(value);
 
-    return () => {
-      controller.abort();
-    };
-  }, [search]);
+    if (debounceTime) {
+      clearTimeout(debounceTime);
+    }
+
+    const timeout = setTimeout(() => {
+      fetchData(value);
+    }, 500);
+
+    setDebounceTime(timeout);
+  };
+
+  useEffect(() => {
+    fetchData(search);
+  }, []);
 
   return (
     <CharachterContext.Provider
       value={{
         search,
-        setSearch,
+        handleSerach,
         allCharachters,
         isLoading,
         setCharachterId,

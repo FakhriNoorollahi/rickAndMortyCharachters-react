@@ -4,8 +4,8 @@ import { useFetch } from "../../hooks/useFetch";
 import CharachterEpisodes from "../CharachterEpisodes/CharachterEpisodes";
 import { useCharachter } from "../../Context/CharacterContext";
 
-function CharachterDetail({ charachterId }) {
-  const { addToFavorite, favourites } = useCharachter();
+function CharachterDetail() {
+  const { addToFavorite, favourites, charachterId } = useCharachter();
   const { isLoading, data: charachter } = useFetch(`character/${charachterId}`);
 
   if (isLoading || !charachter) return <Loader />;
@@ -25,7 +25,7 @@ function CharachterDetail({ charachterId }) {
 export default CharachterDetail;
 
 function CharachterSubInfo({ charachter, addToFavorite, favourites }) {
-  const isTrue = favourites.map((item) => item.id).includes(charachter.id);
+  const isExist = favourites.map((item) => item.id).includes(charachter.id);
 
   return (
     <div className="character-detail">
@@ -52,14 +52,14 @@ function CharachterSubInfo({ charachter, addToFavorite, favourites }) {
           <p>{charachter.location.name}</p>
         </div>
         <div className="actions">
-          {isTrue ? (
+          {isExist ? (
             <p style={{ color: "var(--slate-100)" }}>
               Already Added To Favourites✅
             </p>
           ) : (
             <button
               className="btn btn--primary"
-              onClick={() => addToFavorite(charachter.id)}
+              onClick={() => addToFavorite(charachter)}
             >
               Add To Favourite
             </button>

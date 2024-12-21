@@ -1,11 +1,12 @@
 import React from "react";
 import { GoHeart } from "react-icons/go";
 import { useCharachter } from "../../Context/CharacterContext";
+import logo from "/src/assets/images/logo.png";
 
 function AppHeader() {
   const {
     search,
-    setSearch,
+    handleSerach,
     allCharachters,
     openModal,
     setOpenModal,
@@ -14,13 +15,17 @@ function AppHeader() {
 
   return (
     <div className="navbar ">
-      <div className="navbar__logo">LOGO💟</div>
+      <div className="navbar__logo">
+        <span>Rick And Morty</span>
+        <img src={logo} alt="logo" />
+      </div>
+
       <input
         className="text-field"
         type="text"
         placeholder="Search..."
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) => handleSerach(e.target.value)}
       />
       <div className="navbar__result">
         Found {allCharachters.length} charachters

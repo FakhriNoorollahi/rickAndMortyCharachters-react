@@ -10,7 +10,7 @@ function SelectedCharachter() {
 
   return (
     <div className="container__character-detail" style={{ flex: 1 }}>
-      <CharachterDetail charachterId={charachterId} />
+      <CharachterDetail />
     </div>
   );
 }
