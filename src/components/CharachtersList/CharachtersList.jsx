@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { HiOutlineEye, HiOutlineEyeSlash } from "react-icons/hi2";
 import Loader from "../Loader/Loader";
 import { useCharachter } from "../../Context/CharacterContext";
+import NoResultFound from "../NoResultFound/NoResultFound";
 
 function CharachtersList() {
   const [viewMore, setViewMore] = useState(false);
@@ -16,6 +17,10 @@ function CharachtersList() {
     <div className="characters-list">
       {isLoading ? (
         <Loader />
+      ) : allCharachters.length === 0 ? (
+        <NoResultFound>
+          <h4>There is no charachter</h4>
+        </NoResultFound>
       ) : (
         <>
           <ul>
